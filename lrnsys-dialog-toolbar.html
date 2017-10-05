@@ -57,7 +57,7 @@
             <div main-title></div>
             <lrnsys-dialog-toolbar-button icon="close" id="close"></lrnsys-dialog-toolbar-button>
         </app-toolbar>
-        <app-toolbar id="secondary">
+        <app-toolbar id="secondary" hidden$="[[!_secondaryHasChildren]]">
             <div class="secondary-buttons">
                 <slot name="secondary" id="secondary-slot"></slot>
             </div>
@@ -69,14 +69,9 @@
 
             properties: {
                 /**
-                * The state of the secondary menu.
+                * Internal state of secondary toolbar
                 */
-                secondaryVisible: {
-                    type: Boolean,
-                    value: false,
-                    reflectToAttribute: true,
-                },
-                secondaryHasChildren: {
+                _secondaryHasChildren: {
                     type: Boolean,
                     value: false
                 }
@@ -89,12 +84,12 @@
             _clickedHandler: function (e) {
                 this.fire('button-clicked', e.detail);
             },
-            attached: function() {
-                this._observer = Polymer.dom(this).observeNodes(this._onNodesChange);
-            },
-            _onNodesChange: function() {
-                this.count = this.$$('#secondary-slot').children.length;
-                console.log(this.count);
+            ready: function () {
+                // listen to see if buttons have been initialized in the secondary
+                // toolbar
+                this.$.secondary.addEventListener('button-initialized', (e) => {
+                    this._secondaryHasChildren = true;
+                });
             }
         });
     </script>

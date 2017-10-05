@@ -42,6 +42,9 @@
                 var localTarget = normalizedEvent.localTarget;
                 var id = localTarget.getAttribute('id');
                 this.fire('clicked', { id: id });
+            },
+            ready: function () {
+                this.fire('button-initialized', {id: this.id});
             }
         });
     </script>
