@@ -42,7 +42,7 @@
         <slot name="label"></slot>
       </span>
     </paper-button>
-    <iron-collapse id="collapse">
+    <iron-collapse id="collapse" opened="{{opened}}">
       <div class="collapse-content">
         <slot name="content"></slot>
       </div>
@@ -52,6 +52,17 @@
   <script>
     Polymer({
       is: 'lrnsys-collapselist-item',
+      properties: {
+        /**
+         * Whether or not this is default open on render.
+         */
+        opened: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true,
+          notify: true,
+        },
+      },
       /**
        * Toggling collapse on an iron element.
        */
