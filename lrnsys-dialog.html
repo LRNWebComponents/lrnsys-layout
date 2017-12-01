@@ -94,10 +94,10 @@
       </lrnsys-dialog-toolbar>
       <!--END TOOLBAR TO DIALOG -->
       <div class="dialog-header">
-        <slot name="header"></slot>
         <template is="dom-if" if="[[header]]">
           <h3 class="white-text black dialog-heading">[[header]]</h3>
         </template>
+        <slot name="header"></slot>
       </div>
       <paper-dialog-scrollable class="dialog-contents" id="dialogcontent">
         <slot></slot>
