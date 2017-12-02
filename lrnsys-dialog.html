@@ -10,6 +10,7 @@
 <link rel="import" href="../materializecss-styles/colors.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="lrnsys-dialog-toolbar.html">
+<link rel="import" href="lrnsys-button-inner.html">
 
 <!--
 `lrnsys-dialog`
@@ -31,6 +32,10 @@
         bottom: 5%;
         left: 5%;
         overflow: auto;
+        border-radius: 3px;
+      }
+      paper-dialog-scrollable {
+        margin-top:0;
       }
 
       paper-dialog>*:first-child {
@@ -39,11 +44,17 @@
 
       .dialog-header {
         width: 100%;
-        padding: 0 0 .5em 0;
+<<<<<<< HEAD
+        padding: 0 24px .5em;
         margin: 0 0 .5em 0;
+        text-align: left;
+=======
+        padding: 0;
+        margin: 0;
         text-align: -webkit-center;
         text-align: center;
         text-transform: uppercase;
+>>>>>>> 883e72f65b253a90c5994cf87da32a449fc6626b
       }
 
       .dialog-heading {
@@ -52,10 +63,6 @@
         height: 2.5em;
         line-height: 3em;
         font-size: 1.5em;
-      }
-
-      .text-label {
-        margin-left: 1em;
       }
 
       #close-button {
@@ -68,16 +75,9 @@
       }
     </style>
     <paper-button class$="[[class]]" id="dialog-trigger" on-tap="toggleDialog" raised="[[raised]]" disabled$="[[disabled]]" title="[[alt]]">
-      <template is="dom-if" if="[[avatar]]">
-        <paper-avatar src$="[[avatar]]"></paper-avatar>
-      </template>
-      <template is="dom-if" if="[[icon]]">
-        <lrn-icon icon="[[icon]]"></lrn-icon>
-      </template>
-      <template is="dom-if" if="[[text]]">
-        <span class="text-label">[[text]]</span>
-      </template>
-      <slot name="button"></slot>
+      <lrnsys-button-inner avatar$="[[avatar]]" icon$="[[icon]]" text$="[[text]]">
+        <slot name="button"></slot>
+      </lrnsys-button-inner>
     </paper-button>
     <template is="dom-if" if="[[alt]]">
       <paper-tooltip for="dialog-trigger" animation-delay="0">[[alt]]</paper-tooltip>
@@ -94,10 +94,10 @@
       </lrnsys-dialog-toolbar>
       <!--END TOOLBAR TO DIALOG -->
       <div class="dialog-header">
-        <slot name="header"></slot>
         <template is="dom-if" if="[[header]]">
           <h3 class="white-text black dialog-heading">[[header]]</h3>
         </template>
+        <slot name="header"></slot>
       </div>
       <paper-dialog-scrollable class="dialog-contents" id="dialogcontent">
         <slot></slot>
