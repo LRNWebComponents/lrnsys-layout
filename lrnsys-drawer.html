@@ -64,7 +64,7 @@
       }
     </style>
     <paper-button class$="[[class]]" id="flyout-trigger" on-tap="toggleDrawer" raised="[[raised]]" disabled$="[[disabled]]" title="[[alt]]">
-      <lrnsys-button-inner avatar$="[[avatar]]" icon$="[[icon]]" text$="[[text]]">
+      <lrnsys-button-inner avatar="[[avatar]]" icon="[[icon]]" text="[[text]]">
         <slot name="button"></slot>
       </lrnsys-button-inner>
     </paper-button>
@@ -244,7 +244,7 @@
         root.focusState = !root.focusState;
       },
       /**
-       * Find out if the text does not have an avatar or an icon to the left, 
+       * Find out if the text does not have an avatar or an icon to the left,
        * and add a class to remove the left margin.
        */
        _getTextLabelClass: function() {
