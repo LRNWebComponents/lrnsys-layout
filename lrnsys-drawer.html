@@ -28,12 +28,12 @@
         --app-drawer-content-container: {
           padding: 0;
           overflow-y: scroll;
-          margin-top: 8em;
+          position: fixed;
         }
       }
       .drawer-header {
         width: 100%;
-        padding: 0.5em 0;
+        padding: 0;
         margin: 0 0 .5em 0;
         text-align: left;
         @apply --lrnsys-drawer-header;
@@ -84,7 +84,7 @@
         <div class="drawer-content">
           <slot></slot>
         </div>
-        <paper-button id="close-button" class="black white-text" on-tap="toggleDrawer">Close<iron-icon icon="close"></iron-icon></paper-button>
+        <paper-button tabindex="0" id="close-button" class="black white-text" on-tap="toggleDrawer">Close<iron-icon icon="close"></iron-icon></paper-button>
       </div>
     </app-drawer>
   </template>
@@ -212,12 +212,13 @@
        * Toggle the drawer to open / close.
        */
       toggleDrawer: function() {
-        let root = this;
         // support for appending to the light document
-        if (root.bodyAppend) {
-          document.body.appendChild(root.$.flyoutcontent);
+        if (this.bodyAppend) {
+          document.body.appendChild(this.$.flyoutcontent);
+          this.bodyAppend = false;
         }
-        root.$.flyoutcontent.toggle();
+        this.$.flyoutcontent.toggle();
+        this.$.flyoutcontent.focus();
       },
       /**
        * Handle toggle for mouse class and manage classList array for paper-button.
