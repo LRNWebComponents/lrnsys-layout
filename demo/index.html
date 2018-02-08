@@ -217,11 +217,11 @@
     </demo-snippet>
   </div>
   <div class="vertical-section-container centered">
-    <h3>Using Dialog, same as above</h3>
+    <h3>Using Dialog but won't auto focus back here afterwards</h3>
     <demo-snippet>
       <template>
         <lrnsys-dialog id="dialog" class="circle" body-append raised hover-class="black white-text" text="btopro2" avatar="http://www.elmsln.org/sites/redesign/files/styles/square-profile-portrait/public/headshot.jpg"
-          alt="Bryan O">
+          alt="Bryan O" disable-auto-focus>
           <span slot="toolbar-secondary">
             <lrnsys-dialog-toolbar-button title="Zoom In" icon="zoom-in" id="zoom-in"></lrnsys-dialog-toolbar-button>
             <lrnsys-dialog-toolbar-button title="Zoom Out" icon="zoom-out" id="zoom-out"></lrnsys-dialog-toolbar-button>
@@ -280,7 +280,7 @@
     </demo-snippet>
   </div>
   <div class="vertical-section-container centered">
-    <h3>Using Dialog, same as above again</h3>
+    <h3>A last example to prove it works against target that invoked it</h3>
     <demo-snippet>
       <template>
         <lrnsys-dialog id="dialog" class="circle" body-append raised hover-class="black white-text" text="btopro3" avatar="http://www.elmsln.org/sites/redesign/files/styles/square-profile-portrait/public/headshot.jpg"

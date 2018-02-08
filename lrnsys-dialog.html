@@ -133,7 +133,15 @@
         focusState: {
           type: Boolean,
           value: false,
-        }
+        },
+        /**
+         * Ability to disable the auto focus mode
+         * this is useful if something else is picking up this capability.
+         */
+        disableAutoFocus: {
+          type: Boolean,
+          value: false,
+        },
       },
       /**
        * Handle a focus/tap event and add the hoverclasses
@@ -205,7 +213,9 @@
        * Attached lifecycle
        */
       attached: function() {
-        document.body.addEventListener('lrnsys-dialog-modal-closed', this._accessibleFocus.bind(this));
+        if (!this.disableAutoFocus) {
+          document.body.addEventListener('lrnsys-dialog-modal-closed', this._accessibleFocus.bind(this));
+        }
       },
       /**
        * Set ourselves as having focus after the modal closes.
