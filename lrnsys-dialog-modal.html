@@ -64,7 +64,7 @@
         line-height: 3em;
       }
     </style>
-    <paper-dialog modal="[[modal]]" id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+    <paper-dialog modal="[[modal]]" id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop opened$=[[opened]]>
       <!--START TOOLBAR TO DIALOG -->
       <lrnsys-dialog-toolbar on-button-clicked="_toolbarButtonClickedHandler">
         <span slot="primary">
@@ -90,6 +90,7 @@
       listeners: {
         'iron-overlay-closed': '_modalClosed',
         'iron-overlay-opened': '_resizeContent',
+        'iron-overlay-canceled': '_changeOpen',
       },
       properties: {
         /**
@@ -105,6 +106,15 @@
         modal: {
           type: Boolean,
           value: false,
+        },
+        /**
+         * Is dialog opened?
+         */
+        opened: {
+          type: Boolean,
+          value: false,
+          reflectToAttribute: true,
+          notify: true,
         },
         /**
          * Default heading classes.
@@ -167,6 +177,7 @@
       _modalClosed: function(e) {
         // fire so we can react to accessibly; don't care who invoked this
         // just that it has happened
+        this._changeOpen(e);
         this.fire('lrnsys-dialog-modal-closed', this);
       },
       /**
@@ -176,6 +187,7 @@
         var evt = document.createEvent('UIEvents');
         evt.initUIEvent('resize', true, false,window,0);
         window.dispatchEvent(evt);
+        this._changeOpen(e);
       },
       /**
        * Ready lifecyce
@@ -201,7 +213,15 @@
           document.body.appendChild(this);
         }
       },
-
+      /**
+       * Attached lifecyce
+       */
+      _changeOpen: function(e) {
+        if (e.srcElement === this.$.dialog) {
+          this.opened = e.type === 'iron-overlay-opened';
+          this.fire('lrnsys-dialog-modal-changed', this);
+        }
+      },
     });
   </script>
 </dom-module>
