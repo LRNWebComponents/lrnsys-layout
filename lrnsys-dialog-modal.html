@@ -44,24 +44,16 @@
         width: 100%;
         padding: 0;
         margin: 0;
-        text-align: -webkit-center;
-        text-align: center;
-        text-transform: uppercase;
       }
 
       .dialog-heading {
         padding: 0;
         margin: 0;
-        height: 2.5em;
-        line-height: 3em;
-        font-size: 1.5em;
       }
       .dialog-header-slot ::slotted(*) {
-        font-size: 1.5em;
         margin: 0;
         padding: 0 15px;
-        height: 2.5em;
-        line-height: 3em;
+        line-height: 200%;
       }
     </style>
     <paper-dialog modal="[[modal]]" id="dialog" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop opened$=[[opened]]>
@@ -76,7 +68,7 @@
       </lrnsys-dialog-toolbar>
       <!--END TOOLBAR TO DIALOG -->
       <div class$="[[headingClass]] dialog-header">
-        <h3 class$="[[headingClass]] dialog-heading" hidden$="[[!header]]">[[header]]</h3>
+        <div class$="[[headingClass]] dialog-heading" hidden$="[[!header]]">[[header]]</div>
         <span class="dialog-header-slot"><slot name="header"></slot></span>
       </div>
       <paper-dialog-scrollable class="dialog-contents" id="dialogcontent">
