@@ -244,9 +244,10 @@
        * Attached lifecyce
        */
       _changeOpen: function(e) {
-        if (e.srcElement === this.$.modal) {
+        e.stopPropagation();
+        if (e.detail === this.$.modal) {
           this.opened = e.type === 'iron-overlay-opened';
-          this.fire('lrnsys-dialog-modal-changed', this);
+          this.fire('lrnsys-dialog-changed', this);
         }
       },
     });
