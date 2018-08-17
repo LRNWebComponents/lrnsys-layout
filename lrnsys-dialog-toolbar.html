@@ -10,20 +10,22 @@
         display: block;
         --app-toolbar-primary-height: 40px;
         --app-toolbar-secondary-height: 50px;
+        --app-toolbar-secondary-color: var(--lrnsys-dialog-toolbar-secondary-background-color);
+        --app-toolbar-primary-color: var(--app-toolbar-primary-color);
         position: relative;
         margin: 0;
         padding: 0;
       }
       app-toolbar#primary {
         color: var(--lrnsys-dialog-color,#000);
-        background-color: var(--app-toolbar-primary-color),var(--app-toolbar-primary-color);
+        background-color: var(--app-toolbar-primary-color);
         z-index: 10;
         position: relative;
         height: var(--app-toolbar-primary-height);
       }
       app-toolbar#secondary {
         color: var(--lrnsys-dialog-color,#000);
-        background-color: var(--app-toolbar-secondary-color, var(--lrnsys-dialog-toolbar-secondary-background-color));
+        background-color: var(--app-toolbar-secondary-color);
         z-index: 5;
         position: absolute;
         width: 100%;
