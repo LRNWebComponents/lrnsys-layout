@@ -14,6 +14,7 @@
     <style>
       :host {
         display: block;
+        color: var(--lrnsys-collapselist-text-color, #000);
       }
       paper-button {
         height: 3em;
@@ -26,8 +27,7 @@
         width: 100%;
         text-transform: unset;
         border-radius: 0;
-        border: 1px solid var(--lrnsys-collapselist-item-border, --paper-grey-300);
-        background-color: var(--lrnsys-collapselist-item-color, --paper-grey-100)
+        background-color: var(--lrnsys-collapselist-item-color, #fff);
       }
       paper-button span {
         pointer-events: none;
@@ -38,11 +38,12 @@
         height: 2em;
       }
       :host[opened] #collapse {
-        border-bottom: 1px solid var(--lrnsys-collapselist-item-border, --paper-grey-300);
+        border-top: 1px solid var(--lrnsys-collapselist-item-border, #bbb);
+        background-color: var(--lrnsys-collapselist-item-active-color, #eee);
       }
       :host[opened] .collapse-label {
         font-weight: bold;
-        background-color: var(--lrnsys-collapselist-item-active-color, --paper-grey-200)
+        background-color: var(--lrnsys-collapselist-item-active-color, #eee);
       }
       .collapse-content {
         padding: 1em;

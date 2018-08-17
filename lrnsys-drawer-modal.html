@@ -1,9 +1,9 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../app-layout/app-layout.html">
 <link rel="import" href="../neon-animation/web-animations.html">
-<link rel="import" href="../materializecss-styles/colors.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="lrnsys-button-inner.html">
+<link rel="import" href="../simple-colors/simple-colors.html">
 
 <!--
 `lrnsys-drawer-modal`
@@ -14,7 +14,7 @@
 
 <dom-module id="lrnsys-drawer-modal">
   <template>
-    <style include="materializecss-styles-colors">
+    <style is="custom-style" include="simple-colors">
       :host {
         display: block;
         z-index: 1000;
@@ -25,6 +25,8 @@
           padding: 0;
           overflow-y: scroll;
           position: fixed;
+          color: var(--lrnsys-drawer-color);
+          background-color: var(--lrnsys-drawer-background-color);
         }
       }
       .drawer-header {

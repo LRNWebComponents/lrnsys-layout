@@ -3,7 +3,7 @@
 <link rel="import" href="../paper-avatar/paper-avatar.html">
 <link rel="import" href="../paper-tooltip/paper-tooltip.html">
 <link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="../materializecss-styles/colors.html">
+<link rel="import" href="../simple-colors/simple-colors.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="lrnsys-button-inner.html">
 <link rel="import" href="lrnsys-drawer-modal.html">
@@ -17,9 +17,11 @@
 
 <dom-module id="lrnsys-drawer">
   <template>
-    <style include="materializecss-styles-colors">
+    <style is="custom-style" include="simple-colors">
       :host {
         display: block;
+        --lrnsys-drawer-color: var(--simple-colors-foreground1);
+        --lrnsys-drawer-background-color: var(--simple-colors-background1);
       }
       lrnsys-drawer-modal {
         --lrnsys-drawer-width: 30%;
@@ -45,6 +47,7 @@
         'mouseout': 'tapEventOff',
         'flyouttrigger.focused-changed': 'focusToggle',
       },
+      behaviors: [ simpleColorsBehaviors ],
       properties: {
         /**
          * State for if it is currently open.
